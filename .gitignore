@@ -1,0 +1,9 @@
+node_modules
+dist
+.env
+
+*.osm.pbf
+*.osm.bz2
+
+__pycache__/
+*.pyc
