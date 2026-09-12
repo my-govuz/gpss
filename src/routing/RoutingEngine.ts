@@ -1,0 +1,2 @@
+import type { Location,RoadGraph,Route } from '../types'; import { buildGeodesicRoute } from './geodesic'; import { RoadRouter } from './RoadRouter';
+export class RoutingEngine {constructor(private readonly graph?:RoadGraph){} route(start:Location,end:Location):Route {try{return this.graph?new RoadRouter(this.graph).route(start,end):buildGeodesicRoute(start,end)}catch(error){if(this.graph)throw error;return buildGeodesicRoute(start,end)}}}

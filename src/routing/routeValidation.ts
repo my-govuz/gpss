@@ -1,0 +1,2 @@
+import type { Route } from '../types';
+export function validateRoute(route:Route):Route {if(!Number.isFinite(route.distanceKm)||route.distanceKm<0||!Number.isFinite(route.durationHours)||route.durationHours<0||route.points.length<2)throw new Error('Route result is invalid.');for(const point of route.points){if(!Number.isFinite(point.lat)||!Number.isFinite(point.lon)||point.lat<-90||point.lat>90||point.lon<-180||point.lon>180)throw new Error('Route geometry contains invalid coordinates.')}return route;}

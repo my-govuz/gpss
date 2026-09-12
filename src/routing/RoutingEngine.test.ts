@@ -1,0 +1,3 @@
+import { describe,expect,it } from 'vitest'; import { RoutingEngine } from './RoutingEngine'; import type { Location,RoadGraph } from '../types';
+const place=(id:string,lon:number):Location=>({id,name:id,country:'',kind:'selected',lat:0,lon});const graph:RoadGraph={version:'1',nodes:[{id:'a',lat:0,lon:0},{id:'b',lat:0,lon:1}],edges:[{from:'a',to:'b',distanceMeters:100,speedKph:50,roadClass:'primary',oneway:true}]};
+describe('routing engine selection',()=>{it('uses road route with valid graph',()=>expect(new RoutingEngine(graph).route(place('a',0),place('b',1)).mode).toBe('road'));it('uses geodesic route without graph',()=>expect(new RoutingEngine().route(place('a',0),place('b',1)).mode).toBe('geodesic'))});
